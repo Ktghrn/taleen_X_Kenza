@@ -27,7 +27,7 @@ Petit Warning, ici le tableau 'T' portera le nom de 'Ta'.
 
 
 4. Soit les tableaux Tx= [10, 16, 0, 4] et Ty = [-40, 16, 17, 0].
-Écrire un programme pour calculer l'intersection des deux tableaux Tx et Ty dans un nouveau tableau Tz en PHP.
+Écrire un programme pour calculer l'intersection des deux tableaux Tx et Ty dans un nouveau tableau Tz.
 Petit Warning, ici le tableau 'T1' portera le nom de 'Tx'. Il en sera de même pour le tableau 'T2' qui portera le nom de 'Ty' et le tableau 'T3' qui portera le nom de 'Tz'.
 
 => L'intersection des tableaux Tx et Ty est : [16,0,]
