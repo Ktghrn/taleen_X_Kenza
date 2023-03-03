@@ -1,7 +1,7 @@
 <?php
 
-  echo"1. Soit un tableau T = [10, 20, 40, 13, -2]. <br>Ecrire un programme qui cherche le maximum du tableau T et détermine sa position dans le tableau.<br>";
-
+  //1. Soit un tableau T = [10, 20, 40, 13, -2].
+  //Ecrire un programme qui cherche le maximum du tableau T et détermine sa position dans le tableau.
 
   $T = [10, 20, 40, 13, -2];
 
@@ -17,9 +17,10 @@
 
   echo "La valeur max de T est $max_value; son index est $max_index .<br>";
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-  echo"<br>2. Soit un tableau T1 = [19, 12, 18, 10, 12]. <br> Écrire un programme qui permet de trier le tableau T1 dans un nouveau tableau T2 par ordre décroissant.<br>";
+  //2. Soit un tableau T1 = [19, 12, 18, 10, 12].
+  //Écrire un programme qui permet de trier le tableau T1 dans un nouveau tableau T2 par ordre décroissant.
 
   $T1 = [19, 12, 18, 10, 12];
   $T2 = $T1; // copie du tableau T1
@@ -38,7 +39,11 @@
   }
   echo "] <br>";
 
-  echo"<br>3. Soit un tableau T = [10, 20, 13, 0, -2]. <br> Ecrire un programme qui calcule le nombre d'élément impair de ce tableau.<br> Petit Warning, ici le tableau 'T' portera le nom de 'Ta'.<br>";
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //3. Soit un tableau T = [10, 20, 13, 0, -2].
+  //Ecrire un programme qui calcule le nombre d'élément impair de ce tableau.
+  //Petit Warning, ici le tableau 'T' portera le nom de 'Ta'.
 
   $Ta = [10, 20, 13, 0, -2];
   $count = 0;
@@ -50,7 +55,13 @@
   }
   echo "Le nombre d'éléments impairs est de $count. <br>";
 
-  echo"<br>4. Soit les tableaux Tx= [10, 16, 0, 4] et Ty = [-40, 16, 17, 0]. <br> Écrire un programme pour calculer l'intersection des deux tableaux Tx et Ty dans un nouveau tableau Tz en PHP.<br>";
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+  //4. Soit les tableaux Tx= [10, 16, 0, 4] et Ty = [-40, 16, 17, 0].
+  //Écrire un programme pour calculer l'intersection des deux tableaux Tx et Ty dans un nouveau tableau Tz.
+  //Petit Warning, ici le tableau 'T1' portera le nom de 'Tx'. Il en sera de même pour le tableau 'T2' qui portera le nom de 'Ty' et le tableau 'T3' qui portera le nom de 'Tz'.
 
   $Tx = [10, 16, 0, 4];
   $Ty = [-40, 16, 17, 0];
