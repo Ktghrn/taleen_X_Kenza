@@ -1,0 +1,22 @@
+Hello, dans ce fichier vous trouverez mes reponses à l'exercice 1.
+Ces réponses viennent de mon Localhost. Elles sont donc reportées ici après un test concluant.
+
+1. Soit un tableau T = [10, 20, 40, 13, -2].
+Ecrire un programme qui cherche le maximum du tableau T et détermine sa position dans le tableau.
+La valeur max de T est 40; son index est 2 .
+
+2. Soit un tableau T1 = [19, 12, 18, 10, 12].
+Écrire un programme qui permet de trier le tableau T1 dans un nouveau tableau T2 par ordre décroissant.
+Le tableau T1 se présente comme tel: [19,12,18,10,12,]
+Voici le tableau T1 renvoyé dans le tableau T2 trié par ordre décroissant : [19,18,12,12,10,]
+
+3. Soit un tableau T = [10, 20, 13, 0, -2].
+Ecrire un programme qui calcule le nombre d'élément impair de ce tableau.
+Petit Warning, ici le tableau 'T' portera le nom de 'Ta'.
+Le nombre d'éléments impairs est de 1.
+
+4. Soit les tableaux Tx= [10, 16, 0, 4] et Ty = [-40, 16, 17, 0].
+Écrire un programme pour calculer l'intersection des deux tableaux Tx et Ty dans un nouveau tableau Tz en PHP.
+L'intersection des tableaux Tx et Ty est : [16,0,]
+On remarque ici que le programme a détecté que '16' était présent dans les deux tableaux et l'a donc affiché comme point d'intersection.
+On observe également que les courbes se rejoignent sur le '0'.
