@@ -1,0 +1,97 @@
+Hello, dans ce fichier vous trouverez mes reponses à l'exercice 2.
+
+1. Ecrire une requête permettant de récupérer les informations de stock des produits du fournisseur NUTELLA dans l’enseigne CARREFOUR:
+=>
+SELECT *
+FROM stock
+WHERE fournisseur = 'NUTELLA' AND enseigne = 'CARREFOUR';
+
+
+
+2. Ecrire une requête permettant de récupérer les mouvements de stock des produits du fournisseur LU dans l’enseigne AUCHAN.
+=>
+SELECT *
+FROM mouvements_stock
+WHERE fournisseur = 'LU' AND enseigne = 'AUCHAN';
+
+
+
+3. Considérant que les mouvements de stock négatif sont des ventes. Produire une requête permettant de générer le chiffre d’affaires des ventes de HARIBO dans l’enseigne LECLERC
+=>
+SELECT SUM(prix_unitaire * ABS(quantite)) -- ABS pour obtenir la valeur absolue de la quantité
+FROM mouvements_stock
+WHERE fournisseur = 'HARIBO' AND enseigne = 'LECLERC' AND quantite < 0; -- il faut que la quantité soit négative pour que ce soit un achat
+
+
+
+4. Le magasin 3 a vendu 200 exemplaires du produit 17. Produire les requêtes pour l’information dans la table de mouvement des stocks et mettre à jour le stock du produit du magasin en conséquence.
+=>
+-- dans un premier temps je récupere tous les mouvements des stocks du produit 17 du magasin '3'
+SELECT *
+FROM mouvements_stock
+WHERE magasin = 3 AND produit = 17;
+
+-- Dans un second temps je fais la MAJ qui constiste à update le nombre nouveau nombre de produit en stock.
+UPDATE stock
+SET quantite = quantite - 200
+WHERE magasin = 3 AND produit = 17;
+
+
+5. Le magasin 6 a été racheté par AUCHAN, produire la requête pour mettre à jour l’information dans la table magasin.
+=>
+UPDATE magasin
+SET enseigne = 'AUCHAN'
+WHERE id_magasin = 6;
+
+
+
+
+6. Produire un tableau pour présenter ces données selon le modèle suivant : Information du magasin / Information du produit / Quantité du mouvement de stock / Chiffre d'affaires généré par le mouvement (si mouvement négatif, vente (donc bénéfice), si mouvement positif, achat) / Date du mouvement
+=>
+SELECT
+CONCAT(m.adresse_magasin, ', ', m.codepostal_magasin, ' ', m.ville_magasin) AS 'Information du magasin', -- CONCAT permet de concaténer plusieurs champs
+CONCAT(p.libelle_produit, ' (', p.prix_produit, '€)') AS 'Information du produit',
+ms.quantite_mouvement AS 'Quantité du mouvement de stock', -- On peut utiliser des alias pour les noms de colonnes
+CASE
+WHEN ms.quantite_mouvement < 0 THEN ABS(ms.quantite_mouvement * p.prix_produit) -- ABS permet de récupérer la valeur absolue d'un nombre
+ELSE NULL
+END AS "Chiffre d'affaires généré par le mouvement", --
+CASE
+WHEN ms.quantite_mouvement > 0 THEN ms.quantite_mouvement * p.prix_produit
+ELSE NULL
+END AS "Chiffre d'affaires généré par le mouvement", --
+ms.date_mouvement AS 'Date du mouvement'
+FROM mouvement_stock ms
+INNER JOIN magasin m ON m.id_magasin = ms.id_magasin -- INNER JOIN permet de faire une jointure entre deux tables
+INNER JOIN enseigne e ON e.id_enseigne = m.id_enseigne
+INNER JOIN produit p ON p.id_produit = ms.id_produit
+WHERE e.nom_enseigne = 'SUPER U’;
+
+
+
+7. Permettre de filtrer dynamiquement le tableau précédent, pour :
+- Se focaliser sur un unique magasin :
+=>
+
+FROM mouvement_stock ms
+INNER JOIN magasin m ON m.id_magasin = ms.id_magasin
+INNER JOIN enseigne e ON e.id_enseigne = m.id_enseigne
+INNER JOIN produit p ON p.id_produit = ms.id_produit
+WHERE e.nom_enseigne = 'SUPER U'
+AND m.id_magasin = [ID_DU_MAGASIN_DE_MON_CHOIX]; -- pour selectionner un seul magasin
+
+
+
+- Se focaliser sur un unique produit:
+FROM mouvement_stock ms
+INNER JOIN magasin m ON m.id_magasin = ms.id_magasin
+INNER JOIN enseigne e ON e.id_enseigne = m.id_enseigne
+INNER JOIN produit p ON p.id_produit = ms.id_produit
+WHERE e.nom_enseigne = 'SUPER U'
+AND p.libelle_produit = 'Nom du produit' ;  -- Pour selectionner un seul produit
+
+
+
+8. Bonus Avoir un total du CA qui change en fonction du filtre mis en place.
+=>
+GROUP BY m.id_magasin, p.id_produit; -- pour obtenir un CA j'adopte la méthode "GROUP BY"
